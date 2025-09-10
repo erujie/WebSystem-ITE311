@@ -9,4 +9,13 @@ class Home extends BaseController
         return view('dashboard');
     }
 
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function contact()
+    {
+        return view('contact');
+    }
 }

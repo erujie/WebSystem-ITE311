@@ -10,14 +10,16 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'username' => 'admin',
-                'email'    => 'admin@example.com',
+                'name' => 'admin',
+                'email'    => 'admin@gmail.com',
                 'password' => password_hash('admin123', PASSWORD_DEFAULT),
+                'role' => 'admin',
             ],
             [
-                'username' => 'student1',
-                'email'    => 'student1@example.com',
+                'name' => 'student',
+                'email'    => 'student@gmail.com',
                 'password' => password_hash('student123', PASSWORD_DEFAULT),
+                'role' => 'user',
             ],
         ];
 

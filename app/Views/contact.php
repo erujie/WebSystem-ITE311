@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<?php include('index.php'); ?> 
+<?php include('dashboard.php'); ?> 
 
 <div class="container mt-5">
   <h1>Contact</h1>
