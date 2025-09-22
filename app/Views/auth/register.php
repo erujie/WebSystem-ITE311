@@ -10,8 +10,8 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white text-center">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-center">
                     <h4>User Registration</h4>
                 </div>
                 <div class="card-body">
@@ -57,7 +57,7 @@
                                    class="form-control" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button type="submit" class="btn btn-dark w-100">Register</button>
                     </form>
                 </div>
             </div>

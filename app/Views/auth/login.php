@@ -10,8 +10,8 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-5">
-            <div class="card shadow">
-                <div class="card-header bg-success text-white text-center">
+            <div class="card border-dark">
+                <div class="card-header bg-dark text-white text-center">
                     <h4>User Login</h4>
                 </div>
                 <div class="card-body">
@@ -49,7 +49,7 @@
                             <input type="password" name="password" class="form-control" required>
                         </div>
 
-                        <button type="submit" class="btn btn-success w-100">Login</button>
+                        <button type="submit" class="btn btn-dark w-100">Login</button>
                     </form>
                 </div>
             </div>
