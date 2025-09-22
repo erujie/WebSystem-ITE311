@@ -25,5 +25,4 @@
 
 </div>
 
-</body>
-</html>
+<?= $this->include('templates/footer') ?>
