@@ -64,8 +64,14 @@ class Auth extends Controller
                     'role'      => $user['role'],
                     'isLoggedIn'=> true
                 ]);
-                $session->setFlashdata('success', 'Welcome ' . $user['name']);
-                return redirect()->to('dashboard');
+                $role = strtolower($user['role']);
+                if ($role === 'admin') {
+                    return redirect()->to('/admin/dashboard');
+                } elseif ($role === 'teacher') {
+                    return redirect()->to('/teacher/dashboard');
+                } else {
+                    return redirect()->to('/student/dashboard');
+                }
             }
 
             $session->setFlashdata('error', 'Invalid login credentials');

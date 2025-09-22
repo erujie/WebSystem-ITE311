@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Auth::login');
 
+//lab4-----------------------------------------
 $routes->get('register', 'Auth::register');
 $routes->post('register', 'Auth::register');
 
@@ -15,7 +16,15 @@ $routes->post('login', 'Auth::login');
 
 $routes->get('logout', 'Auth::logout');
 $routes->get('dashboard', 'Auth::dashboard');
+/*--------------------------------------------*/
 
+//lab3------------------------------------------
 //$routes->get('home', 'Home::index');
 $routes->get('/about', 'Home::about');
 $routes->get('/contact', 'Home::contact');
+//----------------------------------------------
+
+//lab5-------------------------------------------------
+$routes->get('admin/dashboard', 'Admin::dashboard');
+$routes->get('teacher/dashboard', 'Teacher::dashboard');
+$routes->get('student/dashboard', 'Student::dashboard');

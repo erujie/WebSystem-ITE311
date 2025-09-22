@@ -4,9 +4,10 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    /*public function index()
+    /* home got recycle into dashboard
+    public function index()
     {
-        return view('dashboard');
+        return view('home');
     }
 
     */public function about()
