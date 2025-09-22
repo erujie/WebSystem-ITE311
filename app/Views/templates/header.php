@@ -1,4 +1,3 @@
-<?= $this->include('templates/header') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
