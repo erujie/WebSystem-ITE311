@@ -4,12 +4,12 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index()
+    /*public function index()
     {
         return view('dashboard');
     }
 
-    public function about()
+    */public function about()
     {
         return view('about');
     }

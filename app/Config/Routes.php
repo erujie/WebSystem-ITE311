@@ -8,14 +8,14 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Auth::login');
 
 $routes->get('register', 'Auth::register');
-$routes->post('register', 'Auth::handleRegister');
+$routes->post('register', 'Auth::register');
 
 $routes->get('login', 'Auth::login');
-$routes->post('login', 'Auth::handleLogin');
+$routes->post('login', 'Auth::login');
 
 $routes->get('logout', 'Auth::logout');
 $routes->get('dashboard', 'Auth::dashboard');
 
-$routes->get('home', 'Home::index');
+//$routes->get('home', 'Home::index');
 $routes->get('/about', 'Home::about');
 $routes->get('/contact', 'Home::contact');
