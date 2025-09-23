@@ -14,10 +14,6 @@ class Teacher extends Controller
             return redirect()->to('/login')->with('error', 'Please log in first.');
         }
 
-        if ($session->get('role') !== 'teacher') {
-            return redirect()->to('/login')->with('error', 'Unauthorized access.');
-        }
-
         return view('teacher/dashboard');
     }
 }

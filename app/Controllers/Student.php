@@ -14,10 +14,6 @@ class Student extends Controller
             return redirect()->to('/login')->with('error', 'Please log in first.');
         }
 
-        if ($session->get('role') !== 'student') {
-            return redirect()->to('/login')->with('error', 'Unauthorized access.');
-        }
-
         return view('student/dashboard');
     }
 }

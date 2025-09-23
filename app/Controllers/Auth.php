@@ -28,7 +28,7 @@ class Auth extends Controller
                         'role'     => 'student'
                     ]);
 
-                    return redirect()->to('/login')->with('success', 'Registration successful.');
+                    return redirect()->to('/login');
                 } else {
                     return view('auth/register', ['validation' => $this->validator]);
                 }
@@ -60,11 +60,11 @@ class Auth extends Controller
                 $session->set([
                     'userID'    => $user['id'],
                     'name'      => $user['name'],
-                    'email'    => $user['email'],
+                    'email'     => $user['email'],
                     'role'      => $user['role'],
                     'isLoggedIn'=> true
                 ]);
-                $role = strtolower($user['role']);
+                $role = ($user['role']);
                 if ($role === 'admin') {
                     return redirect()->to('/admin/dashboard');
                 } elseif ($role === 'teacher') {

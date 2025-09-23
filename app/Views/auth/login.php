@@ -15,13 +15,6 @@
                     <h4>User Login</h4>
                 </div>
                 <div class="card-body">
-                    
-                    <?php if(session()->getFlashdata('success')): ?>
-                        <div class="alert alert-success">
-                            <?= session()->getFlashdata('success') ?>
-                        </div>
-                    <?php endif; ?>
-
                     <?php if(session()->getFlashdata('error')): ?>
                         <div class="alert alert-danger">
                             <?= session()->getFlashdata('error') ?>
@@ -34,7 +27,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <form method="post" action="<?= site_url('login') ?>">
+                    <form method="POST" action="<?= site_url('login') ?>">
                         <?= csrf_field() ?>
 
                         <div class="mb-3">
