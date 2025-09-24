@@ -14,6 +14,15 @@ class Student extends Controller
             return redirect()->to('/login')->with('error', 'Please log in first.');
         }
 
+        $role = $session->get('role');
+        if ($role === 'admin') {
+            return redirect()->to('/admin/dashboard');
+        } elseif ($role === 'teacher') {
+            return redirect()->to('/teacher/dashboard');
+        } elseif ($role !== 'student') {
+            return redirect()->to('/login')->with('error', 'Access denied.');
+        }
+
         return view('student/dashboard');
     }
 }

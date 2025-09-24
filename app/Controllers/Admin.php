@@ -15,6 +15,15 @@ class Admin extends Controller
             return redirect()->to('/login')->with('error', 'Please log in first.');
         }
 
+        $role = $session->get('role');
+        if ($role === 'student') {
+            return redirect()->to('/student/dashboard');
+        } elseif ($role === 'teacher') {
+            return redirect()->to('/teacher/dashboard');
+        } elseif ($role !== 'admin') {
+            return redirect()->to('/login')->with('error', 'Access denied.');
+        }
+
         $userModel   = new UserModel();
 
         $data = [

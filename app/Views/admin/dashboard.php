@@ -15,7 +15,7 @@
             <div class="card border-dark">
                 <div class="card-body">
                     <h5>Total Courses</h5>
-                    <p>N/A</p>
+                    <p><?= $totalCourses ?></p>
                 </div>
             </div>
         </div>
