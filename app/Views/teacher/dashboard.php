@@ -2,9 +2,9 @@
 
     <h1 class="mb-4">Teacher Dashboard</h1>
 
-    <h3>Courses</h3>
-    <ul>
-        <li>No courses assigned.</li>
+    <h3>Courses List</h3>
+    <ul class="list-group">
+        <li class="list-group-item">No courses assigned.</li>
     </ul>
 
 </div>
