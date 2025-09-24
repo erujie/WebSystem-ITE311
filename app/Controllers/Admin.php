@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\UserModel;
 
 class Admin extends Controller
 {
@@ -14,6 +15,12 @@ class Admin extends Controller
             return redirect()->to('/login')->with('error', 'Please log in first.');
         }
 
-        return view('admin/dashboard');
+        $userModel   = new UserModel();
+
+        $data = [
+            'totalUsers'   => $userModel->countAllResults(),
+        ];
+
+        return view('admin/dashboard', $data);
     }
 }
