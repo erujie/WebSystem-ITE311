@@ -7,6 +7,4 @@
         <li class="list-group-item">No courses assigned.</li>
     </ul>
 
-</div>
-
 <?= $this->include('templates/footer') ?>

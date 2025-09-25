@@ -64,14 +64,7 @@ class Auth extends Controller
                     'role'      => $user['role'],
                     'isLoggedIn'=> true
                 ]);
-                $role = ($user['role']);
-                if ($role === 'admin') {
-                    return redirect()->to('/admin/dashboard');
-                } elseif ($role === 'teacher') {
-                    return redirect()->to('/teacher/dashboard');
-                } else {
-                    return redirect()->to('/student/dashboard');
-                }
+                return redirect()->to('/auth/dashboard');
             }
 
             $session->setFlashdata('error', 'Invalid login credentials');
@@ -92,6 +85,20 @@ class Auth extends Controller
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('login');
         }
-        return view('dashboard');
+
+        $session = session();
+        $role = $session->get('role');
+        $userId = $session->get('userID');
+
+        $db = \Config\Database::connect();
+        $userModel = new UserModel();
+
+        $data = ['role' => $role];
+
+        if ($role === 'admin') {
+            $data['totalUsers'] = $userModel->countAllResults();
+        }
+
+        return view('auth/dashboard', $data);
     }
 }

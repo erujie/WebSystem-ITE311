@@ -12,6 +12,5 @@
         <li class="list-group-item active">Lab 5 - Due: Friday by 1pm</li>
     </ul>
 
-</div>
 
 <?= $this->include('templates/footer') ?>

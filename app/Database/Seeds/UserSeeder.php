@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
                 'role'     => 'admin',
             ],
             [
-                'name'     => 'instructor',
-                'email'    => 'instructor@gmail.com',
+                'name'     => 'teacher',
+                'email'    => 'teacher@gmail.com',
                 'password' => password_hash('password', PASSWORD_DEFAULT),
                 'role'     => 'teacher',
             ],
