@@ -2,10 +2,9 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\UserModel;
 
-class Admin extends Controller
+class Admin extends BaseController
 {
     public function dashboard()
     {

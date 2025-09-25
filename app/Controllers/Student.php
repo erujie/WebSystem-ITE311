@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
-
-class Student extends Controller
+class Student extends BaseController
 {
     public function dashboard()
     {

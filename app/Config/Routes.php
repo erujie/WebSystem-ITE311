@@ -22,7 +22,7 @@ $routes->get('login', 'Auth::login');
 $routes->post('login', 'Auth::login');
 
 $routes->get('logout', 'Auth::logout');
-$routes->get('auth/dashboard', 'Auth::dashboard');
+$routes->get('/dashboard', 'Auth::dashboard');
 //------------------------------------------------------
 
 //lab5--------------------------------------------------

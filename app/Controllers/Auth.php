@@ -20,11 +20,11 @@ class Auth extends Controller
                 ];
 
                 if ($this->validate($rules)) {
-                    $userModel = new \App\Models\UserModel();
+                    $userModel = new UserModel();
                     $userModel->save([
-                        'name'     => $this->request->getVar('name'),
-                        'email'    => $this->request->getVar('email'),
-                        'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                        'name'     => $this->request->getPost('name'),
+                        'email'    => $this->request->getPost('email'),
+                        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                         'role'     => 'student'
                     ]);
 
@@ -54,9 +54,9 @@ class Auth extends Controller
                 return view('auth/login', ['validation' => $this->validator]);
             }
 
-            $user = $userModel->where('email', $this->request->getVar('email'))->first();
+            $user = $userModel->where('email', $this->request->getPost('email'))->first();
 
-            if ($user && password_verify($this->request->getVar('password'), $user['password'])) {
+            if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
                 $session->set([
                     'userID'    => $user['id'],
                     'name'      => $user['name'],
@@ -64,7 +64,7 @@ class Auth extends Controller
                     'role'      => $user['role'],
                     'isLoggedIn'=> true
                 ]);
-                return redirect()->to('/auth/dashboard');
+                return redirect()->to('/dashboard');
             }
 
             $session->setFlashdata('error', 'Invalid login credentials');
@@ -88,9 +88,7 @@ class Auth extends Controller
 
         $session = session();
         $role = $session->get('role');
-        $userId = $session->get('userID');
 
-        $db = \Config\Database::connect();
         $userModel = new UserModel();
 
         $data = ['role' => $role];
@@ -99,6 +97,8 @@ class Auth extends Controller
             $data['totalUsers'] = $userModel->countAllResults();
         }
 
-        return view('auth/dashboard', $data);
+        return view('templates/header', $data)
+            . view('auth/dashboard')
+            . view('templates/footer');
     }
 }

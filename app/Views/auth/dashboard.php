@@ -1,7 +1,4 @@
-<?= $this->include('templates/header') ?>
-
-//Admin--------------------------------------------------------------
-<?php if ($role === 'admin'): ?>
+ <?php if ($role === 'admin'): ?>
     <h1 class="mb-4">Admin Dashboard</h1>
 
     <div class="row">
@@ -49,7 +46,6 @@
         </div>
     </div>
 
-//Teacher----------------------------------------------------------
 <?php elseif ($role === 'teacher'): ?>
     <h1 class="mb-4">Teacher Dashboard</h1>
 
@@ -58,7 +54,6 @@
             <li class="list-group-item">No courses assigned.</li>
     </ul>
  
-//Student-----------------------------------------------------------
 <?php elseif ($role === 'student'): ?>
     <h1 class="mb-4">Student Dashboard</h1>
 
@@ -72,5 +67,3 @@
         <li class="list-group-item active">Lab 5 - Due: Friday by 1pm</li>
     </ul>
 <?php endif; ?>
-
-<?= $this->include('templates/footer') ?>
