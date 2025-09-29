@@ -8,11 +8,11 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Auth::login');
 
 
-/*lab3-------------------------------------------------
+//lab3-------------------------------------------------
 $routes->get('home', 'Home::index');
 $routes->get('/about', 'Home::about');
 $routes->get('/contact', 'Home::contact');
-*///-----------------------------------------------------
+//-----------------------------------------------------
 
 //lab4-------------------------------------------------
 $routes->get('register', 'Auth::register');

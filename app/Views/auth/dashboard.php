@@ -2,7 +2,7 @@
     <h1 class="mb-4">Admin Dashboard</h1>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-3">
             <div class="card border-dark">
                 <div class="card-body">
                     <h5>Total Users</h5>
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-3">
             <div class="card border-dark">
                 <div class="card-body">
                     <h5>Total Courses</h5>
