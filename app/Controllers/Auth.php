@@ -3,9 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\UserModel; 
-use CodeIgniter\Controller;
 
-class Auth extends Controller
+class Auth extends BaseController
 {
     public function register()
     {
@@ -15,7 +14,7 @@ class Auth extends Controller
                 $rules = [
                      'name'              => 'required|min_length[3]',
                      'email'             => 'required|valid_email|is_unique[users.email]',
-                     'password'          => 'required|min_length[6]',
+                     'password'          => 'required|min_length[3]',
                      'password_confirm'  => 'matches[password]'
                 ];
 
@@ -47,7 +46,7 @@ class Auth extends Controller
 
             $rules = [
                 'email'    => 'required|valid_email',
-                'password' => 'required|min_length[6]',
+                'password' => 'required|min_length[3]',
             ];
 
             if (!$this->validate($rules)) {
