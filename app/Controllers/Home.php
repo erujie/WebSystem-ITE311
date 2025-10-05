@@ -4,13 +4,12 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    /* home got recycle into dashboard
+    /*
     public function index()
     {
         return view('home');
-    }
-
-    */public function about()
+    }*/
+    public function about()
     {
         return view('about');
     }
