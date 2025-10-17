@@ -25,6 +25,10 @@ $routes->get('logout', 'Auth::logout');
 $routes->get('/dashboard', 'Auth::dashboard');
 //------------------------------------------------------
 
+// role-based dashboards
+$routes->get('teacher/dashboard', 'Teacher::dashboard');
+$routes->get('admin/dashboard', 'Admin::dashboard');
+
 // announcement module
 $routes->get('announcements', 'Announcement::index');
 //------------------------------------------------------
