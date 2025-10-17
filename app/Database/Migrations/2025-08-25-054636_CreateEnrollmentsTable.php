@@ -27,8 +27,7 @@ class CreateEnrollmentsTable extends Migration
             ],
             'enrollment_date' => [
                 'type' => 'DATETIME',
-                'null' => false,
-                'default' => 'CURRENT_TIMESTAMP',
+                'null' => true,
             ],
         ]);
 
