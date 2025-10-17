@@ -24,3 +24,7 @@ $routes->post('login', 'Auth::login');
 $routes->get('logout', 'Auth::logout');
 $routes->get('/dashboard', 'Auth::dashboard');
 //------------------------------------------------------
+
+// announcement module
+$routes->get('announcements', 'Announcement::index');
+//------------------------------------------------------
