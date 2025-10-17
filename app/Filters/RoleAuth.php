@@ -20,11 +20,8 @@ class RoleAuth implements FilterInterface
         $uri = $request->getUri();
         $path = $uri->getPath();
 
-        // Strip subfolder prefix from path if present
+        // Normalize path for subfolder installations
         $path = preg_replace('#^/ITE311-DOSDOS#', '', $path);
-
-        // Debug logging
-        service('logger')->error('RoleAuth: role=' . $role . ', path=' . $path);
 
         if (strtolower($role) === 'admin') {
             if (!str_starts_with($path, '/admin')) {
