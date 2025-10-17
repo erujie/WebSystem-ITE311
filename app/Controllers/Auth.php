@@ -24,7 +24,7 @@ class Auth extends BaseController
                         'name'     => $this->request->getPost('name'),
                         'email'    => $this->request->getPost('email'),
                         'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                        'role'     => 'student'
+                    'role'     => $this->request->getPost('role') ?? 'student'
                     ]);
 
                     return redirect()->to('/login');
@@ -64,11 +64,11 @@ class Auth extends BaseController
                     'isLoggedIn'=> true
                 ]);
                 // Role based-----------------------------------------------------------
-                if ($user['role'] === 'student') {
+                if (strtolower($user['role']) === 'student') {
                     return redirect()->to('/announcements');
-                } elseif ($user['role'] === 'teacher') {
+                } elseif (strtolower($user['role']) === 'teacher') {
                     return redirect()->to('/teacher/dashboard');
-                } elseif ($user['role'] === 'admin') {
+                } elseif (strtolower($user['role']) === 'admin') {
                     return redirect()->to('/admin/dashboard');
                 } else {
                     return redirect()->to('/dashboard'); //excluded for now

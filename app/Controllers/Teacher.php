@@ -6,6 +6,6 @@ class Teacher extends BaseController
 {
     public function dashboard()
     {
-        return view('teacher_dashboard');
+        return view('teacher/dashboard');
     }
 }

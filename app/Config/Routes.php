@@ -26,8 +26,12 @@ $routes->get('/dashboard', 'Auth::dashboard');
 //------------------------------------------------------
 
 // role-based dashboards
-$routes->get('teacher/dashboard', 'Teacher::dashboard');
-$routes->get('admin/dashboard', 'Admin::dashboard');
+$routes->group('teacher', ['filter' => 'roleauth'], function($routes) {
+    $routes->get('dashboard', 'Teacher::dashboard');
+});
+$routes->group('admin', ['filter' => 'roleauth'], function($routes) {
+    $routes->get('dashboard', 'Admin::dashboard');
+});
 
 // announcement module
 $routes->get('announcements', 'Announcement::index');
