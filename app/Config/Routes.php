@@ -25,7 +25,7 @@ $routes->get('logout', 'Auth::logout');
 $routes->get('/dashboard', 'Auth::dashboard');
 //------------------------------------------------------
 
-// role-based dashboards
+/* MidtermExam------------------------------------------
 $routes->group('teacher', ['filter' => 'roleauth'], function($routes) {
     $routes->get('dashboard', 'Teacher::dashboard');
 });
@@ -33,6 +33,5 @@ $routes->group('admin', ['filter' => 'roleauth'], function($routes) {
     $routes->get('dashboard', 'Admin::dashboard');
 });
 
-// announcement module
 $routes->get('announcements', 'Announcement::index');
-//------------------------------------------------------
+*/
