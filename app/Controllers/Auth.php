@@ -96,6 +96,7 @@ class Auth extends BaseController
 
         $session = session();
         $role = $session->get('role');
+        $user_id = $session->get('userID');
 
         $userModel = new UserModel();
 
@@ -103,6 +104,9 @@ class Auth extends BaseController
 
         if ($role === 'admin') {
             $data['totalUsers'] = $userModel->countAllResults();
+        } elseif ($role === 'student') {
+            $enrollmentModel = new \App\Models\EnrollmentModel();
+            $data['enrolledCourses'] = $enrollmentModel->getUserEnrollments($user_id);
         }
 
         return view('templates/header', $data)
