@@ -106,7 +106,16 @@ class Auth extends BaseController
             $data['totalUsers'] = $userModel->countAllResults();
         } elseif ($role === 'student') {
             $enrollmentModel = new \App\Models\EnrollmentModel();
-            $data['enrolledCourses'] = $enrollmentModel->getUserEnrollments($user_id);
+            $courseModel = new \App\Models\CourseModel();
+
+            $enrolledCourses = $enrollmentModel->getUserEnrollments($user_id);
+            $allCourses = $courseModel->getAllCourses();
+
+            $enrolledCourseIds = array_column($enrolledCourses, 'course_id');
+            $data['enrolledCourses'] = $enrolledCourses;
+            $data['availableCourses'] = array_filter($allCourses, function($course) use ($enrolledCourseIds) {
+                return !in_array($course['id'], $enrolledCourseIds);
+            });
         }
 
         return view('templates/header', $data)
