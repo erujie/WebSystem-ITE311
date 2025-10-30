@@ -8,32 +8,32 @@ class Auth extends BaseController
 {
     public function register()
     {
-            helper(['form']);
+        helper(['form']);
 
-            if ($this->request->getMethod() === 'POST') {
-                $rules = [
-                     'name'              => 'required|min_length[3]',
-                     'email'             => 'required|valid_email|is_unique[users.email]',
-                     'password'          => 'required|min_length[3]',
-                     'password_confirm'  => 'matches[password]'
-                ];
+        if ($this->request->getMethod() === 'POST') {
+            $rules = [
+                    'name'              => 'required|min_length[3]',
+                    'email'             => 'required|valid_email|is_unique[users.email]',
+                    'password'          => 'required|min_length[3]',
+                    'password_confirm'  => 'matches[password]'
+            ];
 
-                if ($this->validate($rules)) {
-                    $userModel = new UserModel();
-                    $userModel->save([
-                        'name'     => $this->request->getPost('name'),
-                        'email'    => $this->request->getPost('email'),
-                        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                    'role'     => $this->request->getPost('role') ?? 'student'
-                    ]);
+            if ($this->validate($rules)) {
+                $userModel = new UserModel();
+                $userModel->save([
+                    'name'     => $this->request->getPost('name'),
+                    'email'    => $this->request->getPost('email'),
+                    'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                'role'     => $this->request->getPost('role') ?? 'student'
+                ]);
 
-                    return redirect()->to('/login');
-                } else {
-                    return view('auth/register', ['validation' => $this->validator]);
-                }
+                return redirect()->to('/login');
+            } else {
+                return view('auth/register', ['validation' => $this->validator]);
             }
+        }
 
-            return view('auth/register');
+        return view('auth/register');
     }
 
     public function login()

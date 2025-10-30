@@ -15,7 +15,7 @@
                     <h4>User Registration</h4>
                 </div>
                 <div class="card-body">
-                    
+
                     <?php if(session()->getFlashdata('success')): ?>
                         <div class="alert alert-success">
                             <?= session()->getFlashdata('success') ?>
@@ -59,20 +59,16 @@
 
                         <button type="submit" class="btn btn-dark w-100">Register</button>
                     </form>
+
+                    <p class="text-center mt-3">
+                        Already have an account? <a href="<?= site_url('login') ?>">Login here</a>
+                    </p>
+
                 </div>
-                        </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                        <div class="mb-3">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password"
-                                   class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="role">Role</label>
-                            <select name="role" id="role" class="form-control" required>
-                                <option value="student" <?php if (set_value('role') == 'student' || !set_value('role')) echo 'selected'; ?>>Student</option>
-                                <option value="teacher" <?php if (set_value('role') == 'teacher') echo 'selected'; ?>>Teacher</option>
-                                <option value="admin" <?php if (set_value('role') == 'admin') echo 'selected'; ?>>Admin</option>
-                            </select>
-                        </div>
+</body>
+</html>
