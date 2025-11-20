@@ -104,9 +104,16 @@ class Auth extends BaseController
 
         if ($role === 'admin') {
             $data['totalUsers'] = $userModel->countAllResults();
+            $courseModel = new \App\Models\CourseModel();
+            $data['courses'] = $courseModel->getAllCourses();
+            $data['totalCourses'] = count($data['courses']);
+        } elseif ($role === 'teacher') {
+            $courseModel = new \App\Models\CourseModel();
+            $data['courses'] = $courseModel->getAllCourses();
         } elseif ($role === 'student') {
             $enrollmentModel = new \App\Models\EnrollmentModel();
             $courseModel = new \App\Models\CourseModel();
+            $materialModel = new \App\Models\MaterialModel();
 
             $enrolledCourses = $enrollmentModel->getUserEnrollments($user_id);
             $allCourses = $courseModel->getAllCourses();
@@ -116,6 +123,12 @@ class Auth extends BaseController
             $data['availableCourses'] = array_filter($allCourses, function($course) use ($enrolledCourseIds) {
                 return !in_array($course['id'], $enrolledCourseIds);
             });
+
+            $materials = [];
+            foreach ($enrolledCourseIds as $courseId) {
+                $materials = array_merge($materials, $materialModel->getMaterialsByCourse($courseId));
+            }
+            $data['materials'] = $materials;
         }
 
         return view('templates/header', $data)

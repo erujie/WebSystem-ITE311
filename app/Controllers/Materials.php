@@ -10,7 +10,7 @@ class Materials extends BaseController
     public function upload($course_id)
     {
         $session = session();
-        if (!$session->get('isLoggedIn') || $session->get('role') !== 'admin') {
+        if (!$session->get('isLoggedIn') || !in_array($session->get('role'), ['admin', 'teacher'])) {
             return redirect()->to('/dashboard');
         }
 
@@ -65,7 +65,7 @@ class Materials extends BaseController
     public function delete($material_id)
     {
         $session = session();
-        if (!$session->get('isLoggedIn') || $session->get('role') !== 'admin') {
+        if (!$session->get('isLoggedIn') || !in_array($session->get('role'), ['admin', 'teacher'])) {
             return redirect()->to('/dashboard');
         }
 

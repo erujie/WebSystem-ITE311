@@ -14,14 +14,36 @@
             <div class="card border-dark">
                 <div class="card-body">
                     <h5>Total Courses</h5>
-                    <p>Empty</p>
+                    <p><?= $totalCourses ?></p>
                 </div>
             </div>
         </div>
         <div class="mb-4"></div>
     </div>
 
-    <div class="card">
+    <div class="card mt-4">
+        <div class="card-header">Manage Courses</div>
+        <div class="card-body">
+            <?php if (!empty($courses)): ?>
+                <div class="row">
+                    <?php foreach ($courses as $course): ?>
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo esc($course['title']); ?></h5>
+                                    <a href="<?= base_url('admin/course/' . $course['id'] . '/upload') ?>" class="btn btn-primary">Upload Materials</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <p>No courses available.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <div class="card mt-4">
         <div class="card-header">Recent Activity</div>
         <div class="card-body">
             <table class="table">
@@ -49,10 +71,27 @@
 <?php elseif ($role === 'teacher'): ?>
     <h1 class="mb-4">Teacher Dashboard</h1>
 
-    <h3>Courses List</h3>
-    <ul class="list-group">
-            <li class="list-group-item">No courses assigned.</li>
-    </ul>
+    <div class="card mt-4">
+        <div class="card-header">Manage Courses</div>
+        <div class="card-body">
+            <?php if (!empty($courses)): ?>
+                <div class="row">
+                    <?php foreach ($courses as $course): ?>
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo esc($course['title']); ?></h5>
+                                    <a href="<?= base_url('admin/course/' . $course['id'] . '/upload') ?>" class="btn btn-primary">Upload Materials</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <p>No courses available.</p>
+            <?php endif; ?>
+        </div>
+    </div>
  
 <?php elseif ($role === 'student'): ?>
     <h1 class="mb-4">Student Dashboard</h1>
@@ -95,6 +134,27 @@
         <?php else: ?>
             <div class="alert alert-info">All courses are enrolled.</div>
         <?php endif; ?>
+
+    <div id="downloadableMaterialsContainer">
+        <h3 class="mt-4">Downloadable Materials</h3>
+        <?php if (!empty($materials)): ?>
+            <div class="row">
+                <?php foreach ($materials as $material): ?>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo esc($material['file_name']); ?></h5>
+                                <p class="card-text">Uploaded: <?php echo date('M d, Y', strtotime($material['created_at'])); ?></p>
+                                <a href="/materials/download/<?php echo $material['id']; ?>" class="btn btn-primary">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div class="alert alert-info">No materials available yet.</div>
+        <?php endif; ?>
+    </div>
 
     <h3 class="mt-4">Upcoming Deadlines</h3>
     <ul class="list-group">

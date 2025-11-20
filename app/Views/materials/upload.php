@@ -17,7 +17,7 @@
             <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
         <?php endif; ?>
 
-        <form action="/admin/course/<?= $course_id ?>/upload" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('admin/course/' . $course_id . '/upload') ?>" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="material_file" class="form-label">Select File</label>
                 <input type="file" class="form-control" id="material_file" name="material_file" required>
