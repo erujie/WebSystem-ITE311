@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\EnrollmentModel;
+use App\Models\NotificationModel;
+use App\Models\CourseModel;
 
 class Course extends BaseController
 {
@@ -35,6 +37,21 @@ class Course extends BaseController
         ];
 
         if ($enrollmentModel->enrollUser($data)) {
+            // Create notification for the student
+            $courseModel = new CourseModel();
+            $course = $courseModel->find($course_id);
+
+            if ($course) {
+                $notificationModel = new NotificationModel();
+                $notificationData = [
+                    'user_id' => $user_id,
+                    'message' => 'You have been enrolled in ' . $course['title'],
+                    'is_read' => 0,
+                    'created_at' => date('Y-m-d H:i:s')
+                ];
+                $notificationModel->insert($notificationData);
+            }
+
             return $this->response->setJSON([
                 'status' => 'success',
                 'message' => 'Enrollment successful!'

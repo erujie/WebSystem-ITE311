@@ -21,6 +21,7 @@ class NotificationModel extends Model
     public function getNotificationsForUser(int $userId): array
     {
         return $this->where('user_id', $userId)
+                    ->where('is_read', 0)
                     ->orderBy('created_at', 'DESC')
                     ->limit(5)
                     ->findAll();
