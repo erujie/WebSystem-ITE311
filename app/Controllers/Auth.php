@@ -63,7 +63,7 @@ class Auth extends BaseController
                     'role'      => $user['role'],
                     'isLoggedIn'=> true
                 ]);
-                /* Role based-----------------------------------------------------------
+                /* Role based for midterm exam-----------------------------------------------------------
                 if (strtolower($user['role']) === 'student') {
                     return redirect()->to('/announcements');
                 } elseif (strtolower($user['role']) === 'teacher') {
@@ -71,7 +71,7 @@ class Auth extends BaseController
                 } elseif (strtolower($user['role']) === 'admin') {
                     return redirect()->to('/admin/dashboard');
                 } else {*/
-                    return redirect()->to('/dashboard'); //excluded for now
+                    return redirect()->to('/dashboard');
                 //}
             }
 

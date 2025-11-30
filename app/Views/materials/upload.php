@@ -25,7 +25,7 @@
             <button type="submit" class="btn btn-primary">Upload</button>
         </form>
 
-        <a href="/dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>
+        <a href="<?= base_url('/dashboard') ?>" class="btn btn-secondary mt-3">Back to Dashboard</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

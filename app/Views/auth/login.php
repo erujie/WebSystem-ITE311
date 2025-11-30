@@ -47,7 +47,7 @@
                 </div>
             </div>
             <p class="text-center mt-3">
-                Don't have an account? <a href="<?= site_url('register') ?>">Register here</a>
+                Don't have an account? <a href="<?= site_url('/register') ?>">Register here</a>
             </p>
         </div>
     </div>
