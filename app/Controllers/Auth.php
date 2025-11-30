@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel; 
+use App\Models\UserModel;
+use App\Models\NotificationModel;
 
 class Auth extends BaseController
 {
@@ -99,8 +100,10 @@ class Auth extends BaseController
         $user_id = $session->get('userID');
 
         $userModel = new UserModel();
+        $notificationModel = new NotificationModel();
 
         $data = ['role' => $role];
+        $data['unreadNotifications'] = $notificationModel->getUnreadCount($user_id);
 
         if ($role === 'admin') {
             $data['totalUsers'] = $userModel->countAllResults();
