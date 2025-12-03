@@ -34,7 +34,7 @@ class EnrollmentModel extends Model
      */
     public function getUserEnrollments(int $user_id): array
     {
-        return $this->select('enrollments.*, courses.id as course_id, courses.title as course_title')
+        return $this->select('enrollments.*, courses.id as course_id, courses.course_name as course_title')
                     ->join('courses', 'courses.id = enrollments.course_id', 'left')
                     ->where('enrollments.user_id', $user_id)
                     ->orderBy('enrollment_date', 'DESC')

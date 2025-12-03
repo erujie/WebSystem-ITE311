@@ -1,4 +1,5 @@
- <?php if ($role === 'admin'): ?>
+
+<?php if ($role === 'admin'): ?> 
     <h1 class="mb-4">Admin Dashboard</h1>
 
     <div class="row">
@@ -30,7 +31,7 @@
                         <div class="col-md-4 mb-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo esc($course['title']); ?></h5>
+                                    <h5 class="card-title"><?php echo esc($course['course_name']); ?></h5>
                                     <a href="<?= base_url('admin/course/' . $course['id'] . '/upload') ?>" class="btn btn-primary">Upload Materials</a>
                                 </div>
                             </div>
@@ -80,7 +81,7 @@
                         <div class="col-md-4 mb-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo esc($course['title']); ?></h5>
+                                    <h5 class="card-title"><?php echo esc($course['course_name']); ?></h5>
                                     <a href="<?= base_url('admin/course/' . $course['id'] . '/upload') ?>" class="btn btn-primary">Upload Materials</a>
                                 </div>
                             </div>
@@ -124,7 +125,7 @@
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo esc($course['title']); ?></h5>
+                                <h5 class="card-title"><?php echo esc($course['course_name']); ?></h5>
                                 <button type="button" class="btn btn-primary enroll-btn" data-course-id="<?php echo $course['id']; ?>">Enroll</button>
                             </div>
                         </div>

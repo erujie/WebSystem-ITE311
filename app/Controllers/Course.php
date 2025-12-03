@@ -45,7 +45,7 @@ class Course extends BaseController
                 $notificationModel = new NotificationModel();
                 $notificationData = [
                     'user_id' => $user_id,
-                    'message' => 'You have been enrolled in ' . $course['title'],
+                'message' => 'You have been enrolled in ' . $course['course_name'],
                     'is_read' => 0,
                     'created_at' => date('Y-m-d H:i:s')
                 ];
@@ -62,5 +62,24 @@ class Course extends BaseController
             'status' => 'error',
             'message' => 'Enrollment failed. Please try again.'
         ]);
+    }
+
+    public function search()
+    {
+        $searchTerm = $this->request->getGet('search_term');
+        $this->courseModel = new CourseModel();
+
+        if (!empty($searchTerm)) {
+            $this->courseModel->like('course_name', $searchTerm);
+            $this->courseModel->orLike('course_description', $searchTerm);
+        }
+
+        $courses = $this->courseModel->findAll();
+
+        if ($this->request->isAJAX()) {
+            return $this->response->setJSON($courses);
+        }
+
+        return view('courses/search_results', ['courses' => $courses, 'searchTerm' => $searchTerm]);
     }
 }

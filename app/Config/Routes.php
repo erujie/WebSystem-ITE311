@@ -23,14 +23,20 @@ $routes->post('/login', 'Auth::login');
 
 $routes->get('logout', 'Auth::logout');
 $routes->get('/dashboard', 'Auth::dashboard');
+//-------------------------------------------------
 
+//lab6-------------------------------------------------
 $routes->post('/course/enroll', 'Course::enroll');
+//-------------------------------------------------
 
+//lab7-------------------------------------------------
 $routes->get('/admin/course/(:num)/upload', 'Materials::upload/$1');
 $routes->post('/admin/course/(:num)/upload', 'Materials::upload/$1');
 $routes->get('/materials/delete/(:num)', 'Materials::delete/$1');
 $routes->get('/materials/download/(:num)', 'Materials::download/$1');
+//-------------------------------------------------
 
+//lab8-------------------------------------------------
 $routes->get('/notifications', 'Notifications::get');
 $routes->post('/notifications/mark_read/(:num)', 'Notifications::mark_as_read/$1');
 //------------------------------------------------------
@@ -44,4 +50,8 @@ $routes->group('admin', ['filter' => 'roleauth'], function($routes) {
 });
 
 $routes->get('announcements', 'Announcement::index');
-*/
+*///-------------------------------------------------
+
+//lab9-------------------------------------------------
+$routes->get('/courses/search', 'Course::search');
+$routes->post('/courses/search', 'Course::search');

@@ -11,22 +11,22 @@ class CourseSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'title' => 'Introduction to Programming',
-                'description' => 'Learn basic programming concepts.',
+                'course_name' => 'Introduction to Programming',
+                'course_description' => 'Learn basic programming concepts.',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 2,
-                'title' => 'Web Development',
-                'description' => 'Understand the basics of web development.',
+                'course_name' => 'Web Development',
+                'course_description' => 'Understand the basics of web development.',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 3,
-                'title' => 'Database Management',
-                'description' => 'Introduction to databases and SQL.',
+                'course_name' => 'Database Management',
+                'course_description' => 'Introduction to databases and SQL.',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
