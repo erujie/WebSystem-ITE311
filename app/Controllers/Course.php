@@ -8,6 +8,14 @@ use App\Models\CourseModel;
 
 class Course extends BaseController
 {
+    public function index()
+    {
+        $courseModel = new CourseModel();
+        $data['courses'] = $courseModel->getAllCourses();
+
+        return view('courses/index', $data);
+    }
+
     public function enroll()
     {
         $session = session();
@@ -67,14 +75,14 @@ class Course extends BaseController
     public function search()
     {
         $searchTerm = $this->request->getGet('search_term');
-        $this->courseModel = new CourseModel();
+        $courseModel = new CourseModel();
 
         if (!empty($searchTerm)) {
-            $this->courseModel->like('course_name', $searchTerm);
-            $this->courseModel->orLike('course_description', $searchTerm);
+            $courseModel->like('course_name', $searchTerm);
+            $courseModel->orLike('course_description', $searchTerm);
         }
 
-        $courses = $this->courseModel->findAll();
+        $courses = $courseModel->findAll();
 
         if ($this->request->isAJAX()) {
             return $this->response->setJSON($courses);

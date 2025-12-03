@@ -53,5 +53,6 @@ $routes->get('announcements', 'Announcement::index');
 *///-------------------------------------------------
 
 //lab9-------------------------------------------------
+$routes->get('/courses', 'Course::index');
 $routes->get('/courses/search', 'Course::search');
 $routes->post('/courses/search', 'Course::search');
