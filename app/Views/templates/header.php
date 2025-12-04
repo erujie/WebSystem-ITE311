@@ -39,8 +39,8 @@
 
         <?php elseif ($role === 'student'): ?>
           <li class="nav-item"><a class="nav-link" href="<?= base_url('/dashboard') ?>">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">My Classes</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">My Grades</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= base_url('/courses/search')?>">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Grades</a></li>
         <?php endif; ?>
 
         <li class="btn btn-danger btn-sm py-0 px-0"><a class="nav-link" href="<?= base_url('logout') ?>">Logout</a></li>

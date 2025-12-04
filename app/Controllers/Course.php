@@ -8,13 +8,6 @@ use App\Models\CourseModel;
 
 class Course extends BaseController
 {
-    public function index()
-    {
-        $courseModel = new CourseModel();
-        $data['courses'] = $courseModel->getAllCourses();
-
-        return view('courses/index', $data);
-    }
 
     public function enroll()
     {
@@ -88,6 +81,7 @@ class Course extends BaseController
             return $this->response->setJSON($courses);
         }
 
-        return view('courses/search_results', ['courses' => $courses, 'searchTerm' => $searchTerm]);
+        return view('courses/index', ['courses' => $courses, 'searchTerm' => $searchTerm]) 
+            /*. view('courses/search_results', ['courses' => $courses, 'searchTerm' => $searchTerm])*/;
     }
 }
