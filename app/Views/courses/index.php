@@ -48,6 +48,7 @@
 
         <script>
         $(document).ready(function() {
+            var baseUrl = '<?= base_url() ?>';
             // Client-side filtering
             $('#searchInput').on('keyup', function() {
                 var value = $(this).val().toLowerCase();
@@ -61,7 +62,7 @@
                 e.preventDefault();
                 var searchTerm = $('#searchInput').val();
 
-                $.get('/courses/search', {search_term: searchTerm}, function(data) {
+                $.get( baseUrl + '/courses/search', {search_term: searchTerm}, function(data) {
                     $('#coursesContainer').empty();
 
                     if (data.length > 0) {
